@@ -1,5 +1,6 @@
 # WhatchingYou
-=== Eliot ===
+=== WhatchingYou ===
+
 Autori: Diomede Mazzone, Fabio Tessitore
 Tag: Node JS, Python, client/server
 Versione Stabile:1.0
