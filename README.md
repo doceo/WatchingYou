@@ -12,13 +12,32 @@ questo software ha scopo didattico
 
 
 Requisiti:
-*	  Node js;
-*	  Python 3.4;
+*   Raspberry PI (testato su Raspberry PI 2)
+*	  npm (https://www.npmjs.com/)
+*   node js (https://nodejs.org/en/)
+*   Python
 
 
-== Istallazione ==
+== Istallazione e Avvio ==
+
+* modifica IP: nel file index.html bisogna modificare l'indirizzo IP con quello del dispositivo sul quale è lanciato il server
 
 
+* installazione delle dipendenze: all'interno della cartella di WhatchingYou bisogna installare le dipendenze:
+
+  $ npm install
+  
+  
+* per l'esecuzione prima bisogna lanciare lo script python, successivamente il server node js:
+  
+  $ python camera.py
+  
+  $ node app.js
+  oppure
+  $ nodejs app.js //dipende dalla distribuzione di linux
+
+
+a questo punto il server è in ascolto.
 
 == File Presenti ==
 
