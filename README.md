@@ -7,8 +7,8 @@ Versione Stabile:1.0
 Licenza: GPL 3.0 o successive
 
 == Descrizione ==
-questo software ha scopo didattico
 
+questo software ha scopo didattico, consiste in un server che sfrutta la tecnologia Node che restituisce ad un client connesso sulla porta 3000 un fine index.html. Il file index contiene un'immagine acquisita dalla webcam attraverso uno script python. ogni volta che lo script sovrascrive l'immagine il server rileva l'aggiornamento e la spedisce al client.
 
 
 Requisiti:
