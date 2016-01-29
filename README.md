@@ -1,43 +1,52 @@
 # WhatchingYou
-=== WhatchingYou ===
 
-Autori: Diomede Mazzone, Fabio Tessitore
-Tag: Node JS, Python, client/server
-Versione Stabile:1.0
+Autore: Diomede Mazzone con la collaborazione di Fabio Z Tessitore (@FabioZTessitore)
+
+Tag: NodeJS, ExpressJS, Socket.io, Python, client/server
+
+Versione Stabile: 1.0
+
 Licenza: GPL 3.0 o successive
 
-== Descrizione ==
+## Descrizione
 
-questo software ha scopo didattico, consiste in un server che sfrutta la tecnologia Node che restituisce ad un client connesso sulla porta 3000 un fine index.html. Il file index contiene un'immagine acquisita dalla webcam attraverso uno script python. ogni volta che lo script sovrascrive l'immagine il server rileva l'aggiornamento e la spedisce al client.
+Questo software ha scopo didattico, consiste in un server che sfrutta la tecnologia Node per
+restituire ad un client connesso sulla porta 3000 un'immagine acquisita da una webcam
+attravero uno script Python.
+Oogni volta che lo script sovrascrive l'immagine il server rileva l'aggiornamento e la spedisce al client.
 
-
-Requisiti:
+## Requisiti
 *   Raspberry PI (testato su Raspberry PI 2)
 *	  npm (https://www.npmjs.com/)
-*   node js (https://nodejs.org/en/)
+*   nodejs (https://nodejs.org/en/)
+*   expressjs (http://expressjs.com/)
+*   socket.io (http://socket.io/)
 *   Python
 
+## Istallazione e Avvio
 
-== Istallazione e Avvio ==
+* modifica IP: nel file index.html bisogna modificare l'indirizzo IP del server
 
-* modifica IP: nel file index.html bisogna modificare l'indirizzo IP con quello del dispositivo sul quale è lanciato il server
-
-
-* installazione delle dipendenze: all'interno della cartella di WhatchingYou bisogna installare le dipendenze:
-
-  $ npm install
+* l'applicazione server, scritta utilizzando la tecnologia NodeJs, fa uso dei
+moduli ExpressJs e Socket.io.
+Per l'installazione di tali dipendenze:
+```bash
+$ npm install
+```
   
-  
-* per l'esecuzione prima bisogna lanciare lo script python, successivamente il server node js:
-  
-  $ python camera.py
-  
-  $ node app.js
-  oppure
-  $ nodejs app.js //dipende dalla distribuzione di linux
+* per l'esecuzione prima bisogna lanciare lo script python, successivamente il server node:
+```bash 
+$ python camera.py
+```
+```bash
+$ node app.js
+```
+oppure (per distribuzioni basate su Debian)
+```bash
+$ nodejs app.js
+```
 
-
-a questo punto il server è in ascolto.
+a questo punto il server è in ascolto sulla porta 3000.
 
 == File Presenti ==
 
