@@ -6,33 +6,63 @@
   <meta charset="utf-8">
   <title>Watching you ...</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-
+  <!-- carica il modulo socket.io lato client -->
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
-<div class="container">
-<div class="page-header">
-  <h1>Watching you ...</h1>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <div><img src="" id="image"></div>
-  </div>
-</div>
 
-  <script src="/socket.io/socket.io.js"></script>
+  <div class="container">
 
-  <script>
-var socket = io.connect('http://192.168.1.2:3000');
+    <div class="page-header">
+      <h1>Watching you ...</h1>
+    </div>
 
-socket.on('update_image', function(data) {
-  document.getElementById('image').setAttribute('src', 'data:image/jpeg;base64,' + data.buffer);
-});
-  </script>
-</div> <!-- container-->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <img src="" id="image">
+      </div>
+    </div>
+
+    <script>
+    // Indirizzo IP del server
+    //
+    // cambiare l'IP del server qui prima
+    // di lanciare l'applicazione
+    //
+    //var SERVER_IP = "192.168.1.2";
+    var SERVER_IP = "127.0.0.1";
+
+    // la porta su cui il server e' in ascolto.
+    // NON modificare a meno che non
+    // sai esattamente cosa stai facendo
+    //
+    var SERVER_PORT ="3000";
+
+    // crea il socket con il server
+    var socket = io.connect(SERVER_IP+':'+SERVER_PORT);
+
+    // una volta che e' stato stabilito un
+    // socket con il server, registra l'azione
+    // da compiere quando arriva il messaggio 'update_image'
+    //
+    // Insieme al messaggio 'update_image'
+    // il server invia l'immagine attraverso
+    // il parametro data
+    //
+    socket.on('update_image', function(data) {
+      var img_tag = document.getElementById('image');
+      
+      img_tag.setAttribute('src', 'data:image/jpeg;base64,' + data.buffer);
+    });
+    </script>
+
+  </div> <!-- end container-->
 
 </body>
+
 </html>
