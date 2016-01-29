@@ -40,7 +40,6 @@
     // la porta su cui il server e' in ascolto.
     // NON modificare a meno che non
     // sai esattamente cosa stai facendo
-    //
     var SERVER_PORT ="3000";
 
     // crea il socket con il server
@@ -53,7 +52,6 @@
     // Insieme al messaggio 'update_image'
     // il server invia l'immagine attraverso
     // il parametro data
-    //
     socket.on('update_image', function(data) {
       var img_tag = document.getElementById('image');
       
