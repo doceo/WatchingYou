@@ -48,10 +48,6 @@ $ nodejs app.js
 
 a questo punto il server è in ascolto sulla porta 3000.
 
-== File Presenti ==
-
-I file presenti sono:
-
 
 == Bug Riscontrati ==
 
