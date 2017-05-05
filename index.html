@@ -4,27 +4,24 @@
 
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
   <title>Watching you ...</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <!-- carica il modulo socket.io lato client -->
   <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
-
   <div class="container">
 
-    <div class="page-header">
-      <h1>Watching you ...</h1>
-    </div>
+    <h4 class="center-align">Watching you ...</h4>
 
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <img src="" id="image">
+      <div class="col s12">
+        <p class="center-align"><img id="image"></p>
       </div>
     </div>
 
@@ -34,27 +31,20 @@
     // cambiare l'IP del server qui prima
     // di lanciare l'applicazione
     //
-    //var SERVER_IP = "192.168.1.2";
-    var SERVER_IP = "127.0.0.1";
+    var SERVER_IP = "192.168.1.82";
+    //var SERVER_IP = "127.0.0.1";
 
     // la porta su cui il server e' in ascolto.
     // NON modificare a meno che non
     // sai esattamente cosa stai facendo
-    var SERVER_PORT ="3000";
+    var SERVER_PORT = "3000";
 
     // crea il socket con il server
-    var socket = io.connect(SERVER_IP+':'+SERVER_PORT);
+    var socket = io.connect(SERVER_IP + ':' + SERVER_PORT);
 
-    // una volta che e' stato stabilito un
-    // socket con il server, registra l'azione
-    // da compiere quando arriva il messaggio 'update_image'
-    //
-    // Insieme al messaggio 'update_image'
-    // il server invia l'immagine attraverso
-    // il parametro data
-    socket.on('update_image', function(data) {
+    socket.on('frame', function (data) {
       var img_tag = document.getElementById('image');
-      
+
       img_tag.setAttribute('src', 'data:image/jpeg;base64,' + data.buffer);
     });
     </script>
