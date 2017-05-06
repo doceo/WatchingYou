@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
 
   <title>Watching you ...</title>
 
@@ -18,10 +19,14 @@
   <div class="container">
 
     <h4 class="center-align">Watching you ...</h4>
+    <div class="divider"></div>
 
     <div class="row">
       <div class="col s12">
-        <p class="center-align"><img id="image" width="640px" height="480px"></p>
+        <div class="screen">
+          <p class="center-align"><img id="image" width="640px" height="480px"></p>
+          <div id="velocityBar"></div>
+        </div>
       </div>
     </div>
 
@@ -31,8 +36,8 @@
     // cambiare l'IP del server qui prima
     // di lanciare l'applicazione
     //
-    //var SERVER_IP = "192.168.1.82";
-    var SERVER_IP = "127.0.0.1";
+    var SERVER_IP = "192.168.1.82";
+    //var SERVER_IP = "127.0.0.1";
 
     // la porta su cui il server e' in ascolto.
     // NON modificare a meno che non
@@ -44,8 +49,12 @@
 
     socket.on('frame', function (data) {
       var img_tag = document.getElementById('image');
-
       img_tag.setAttribute('src', 'data:image/jpeg;base64,' + data.buffer);
+    });
+
+    socket.on('speed', function (data) {
+      var velocityBarDiv = document.getElementById('velocityBar');
+      velocityBarDiv.style.height = data.value + "px";
     });
     </script>
 

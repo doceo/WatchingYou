@@ -1,17 +1,23 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var cv = require('opencv');
 
+app.use(express.static('styles'));
+
 var SERVER_PORT = 3000;
 
-var FRAME_DELAY = 40;  // msec
+var FRAME_DELAY = 70;  // msec
 var JPEG_QUALITY = 70;
 
 // numero di client collegati
 var clients = 0;
 
 var tID;
+
+// sensori
+var speed = 100;
 
 try {
   var camera = new cv.VideoCapture(0);
@@ -29,9 +35,9 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
   clients++;
+  if (clients == 1) startCamera();
   console.log('stabilita nuova connessione');
   console.log('client collegati: ', clients);
-  if (clients == 1) startCamera();
 
   socket.on('disconnect', function () {
     clients--;
@@ -42,8 +48,8 @@ io.on('connection', function (socket) {
 });
 
 function startCamera() {
-  tID = setInterval(function() {
-    camera.read(function(err, im) {
+  tID = setInterval(function () {
+    camera.read(function (err, im) {
       if (err) throw err;
 
       //im.convertGrayscale();
@@ -65,3 +71,11 @@ function startCamera() {
 function stopCamera() {
   clearInterval(tID);
 }
+
+// gira anche in assenza di client
+// potrebbe essere utile per memorizzare info in db
+setInterval( function () {
+  speed = Math.floor(Math.random() * 300 + 50);
+  io.emit('speed', { value: speed });
+  //console.log(speed);
+}, 1000);

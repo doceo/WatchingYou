@@ -1,0 +1,14 @@
+.screen {
+  position: relative;
+}
+
+#velocityBar {
+  position: absolute;
+  bottom: 15px;
+  left: 30%;
+  width: 5px;
+  height: 100px;
+  background-color: green;
+  opacity: 0.7;
+  z-index: 999;
+}
