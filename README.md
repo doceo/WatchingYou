@@ -1,6 +1,6 @@
 # WhatchingYou
 
-Autore: Diomede Mazzone con la collaborazione di Fabio Z Tessitore (@FabioZTessitore)
+Autore: Diomede Mazzone e Fabio Z Tessitore (@FabioZTessitore)
 
 Tag: NodeJS, ExpressJS, Socket.io, OpenCV, client/server
 
