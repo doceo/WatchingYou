@@ -1,5 +1,5 @@
 {
-  "name": "WhatchingYou",
+  "name": "WatchingYou",
   "version": "0.2.0",
   "description": "OpenCV NodeJS",
   "main": "app.js",
@@ -14,5 +14,5 @@
   },
   "author": "",
   "license": "GPL-3.0",
-  "repository": "https://github.com/doceo/WhatchingYou.git"
+  "repository": "https://github.com/doceo/WatchingYou.git"
 }
